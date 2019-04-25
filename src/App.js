@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from "./Components/Navbar";
+import { connect } from 'react-redux';
+import GroupsContainer from "./Container/GroupsContainer";
+import { fetchGroups } from './actions/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchGroups()
+  }
+
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <GroupsContainer />
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    groups: state.groups,
+    filteredGroups: state.filteredGroups,
+    selectedGroup: state.selectedGroup
+  }
+}
+
+export default connect(mapStateToProps, { fetchGroups} )(App);
