@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 class GroupCard extends React.Component {
 
   render() {
-    console.log(this.props.group.id);
+    // console.log(this.props.group.id);
 
     return (
         <div>

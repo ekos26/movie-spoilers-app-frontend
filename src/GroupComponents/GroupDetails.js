@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const GroupDetails = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div>
       <h3>Group Name: {props.group.name}</h3>
@@ -11,12 +11,14 @@ const GroupDetails = (props) => {
       <img alt="" src={props.group.movies[0].poster}/>
       <p>Plot: {props.group.movies[0].plot}</p>
       <h5>Users: {props.group.users.map(user => user.fullname)}</h5>
+      <button>Edit Group</button>
+      <button>Delete Group</button>
     </div>
   )
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
 
   return {
     group: state.groups.find(group => {

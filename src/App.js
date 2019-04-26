@@ -6,15 +6,19 @@ import GroupsContainer from "./Container/GroupsContainer";
 import { fetchGroups } from './actions/index';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import GroupDetails from './GroupComponents/GroupDetails';
-import Home from './Components/Home'
-import Login from './Components/Login'
-import Signup from './Components/Signup'
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
+import { autoLogin } from './actions/index';
+import { login } from './actions/index';
+
 
 
 class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchGroups()
+    // this.props.login()
   }
 
   render() {
@@ -40,4 +44,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchGroups} )(App));
+export default withRouter(connect(mapStateToProps, { fetchGroups, login } )(App));
