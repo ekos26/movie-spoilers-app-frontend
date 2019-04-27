@@ -5,7 +5,9 @@ export const fetchGroups = () => {
     fetch('http://localhost:3000/groups')
     .then(res => res.json())
     .then(groups => {
-      dispatch({type: FETCH_GROUPS, payload: groups})
+      dispatch({
+        type: FETCH_GROUPS,
+        payload: groups})
     })
   }
 }
@@ -29,6 +31,7 @@ export const signmeUp = (user)=> {
       .then(res => res.json())
       .then(data => {
         // console.log(data);
+        localStorage.setItem('token', data.token)
         dispatch({
           type: SIGNME_UP,
           payload: data.user
@@ -43,17 +46,18 @@ export const login = (user) => ({
 
 export const autoLogin = () => {
   return dispatch => {
-    fetch('http://localhost:3000/auto_login', {
+    fetch('http://localhost:3000/api/auto_login', {
       headers: {
         'Authorization': localStorage.getItem('token')
       }
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
-          // dispatch({
-          //   type: LOGIN, payload: data.user
-          // })
+        if (data.errors) {
+          alert(data.errors)
+        } else {
+          dispatch({ type: 'LOGIN', payload: data.user})
+        }
       })
   }
 }

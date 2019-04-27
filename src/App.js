@@ -3,14 +3,12 @@ import './App.css';
 import Navbar from "./Components/Navbar";
 import { connect } from 'react-redux';
 import GroupsContainer from "./Container/GroupsContainer";
-import { fetchGroups } from './actions/index';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import GroupDetails from './GroupComponents/GroupDetails';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import { autoLogin } from './actions/index';
-import { login } from './actions/index';
+import { autoLogin, fetchGroups, login } from './actions/index';
 
 
 
@@ -18,7 +16,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchGroups()
-    // this.props.login()
+    if (localStorage.getItem('token')) {
+      // this.props.autoLogin()
+    }
   }
 
   render() {

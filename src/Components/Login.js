@@ -16,8 +16,25 @@ class Login extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.setState({username: '', password:''})
-    this.props.login(this.state)
+    this.setState({
+      username: '',
+      password:''
+    })
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Accepts': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: this.state
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('token', data.token)
+        this.props.login(data.user)
+      })
   };
 
   render () {
@@ -31,4 +48,10 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { login} )(Login);
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { login } )(Login);
