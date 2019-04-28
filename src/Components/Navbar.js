@@ -8,7 +8,6 @@ class Navbar extends React.Component {
 
   logout = () => {
     localStorage.removeItem("token")
-  // console.log(this.props);
     this.props.history.push("/")
   }
 
