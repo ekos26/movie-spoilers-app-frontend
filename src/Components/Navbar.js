@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getUser } from '../actions/index';
 
 
 class Navbar extends React.Component {
@@ -20,14 +19,17 @@ class Navbar extends React.Component {
           </NavLink>
         <br/>
 
-        <NavLink to='/groups'>
-          Groups
-        </NavLink>
-        <br/>
+        {this.props.user.username ?
+            <NavLink to='/groups'>
+              Groups
+            </NavLink> : null
+        }
+      <br/>
 
-        <NavLink to='/login'>
+        {this.props.user.username ? null : <NavLink to='/login'>
           Login
-        </NavLink>
+        </NavLink>}
+
         <br/>
 
           {this.props.user.username ?
@@ -39,8 +41,12 @@ class Navbar extends React.Component {
           {this.props.user.username ?
           <button onClick={this.logout}>Logout</button> : null}
 
+        <div>
+          {this.props.user.fullname ? `Welcome back ${this.props.user.fullname}!` : null}
+        </div>
 
       </div>
+
     )
   }
 }

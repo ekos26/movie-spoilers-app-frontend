@@ -9,7 +9,7 @@ import MyGroups from './GroupComponents/MyGroups';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import { autoLogin, fetchGroups, login, getUser } from './actions/index';
+import { autoLogin, fetchGroups, getUser } from './actions/index';
 
 
 
@@ -41,9 +41,6 @@ class App extends React.Component {
           <Route path='/signup' component={Signup} />
           <Route path='/' component={Home} />
         </Switch>
-        <div>
-          {this.props.user.fullname ? `Welcome back ${this.props.user.fullname}!` : null}
-        </div>
       </div>
     )
   }
