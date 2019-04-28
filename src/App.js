@@ -42,7 +42,7 @@ class App extends React.Component {
           <Route path='/' component={Home} />
         </Switch>
         <div>
-          {this.props.user.fullname}
+          {this.props.user.fullname ? `Welcome back ${this.props.user.fullname}!` : null}
         </div>
       </div>
     )

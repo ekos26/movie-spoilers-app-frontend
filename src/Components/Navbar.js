@@ -36,7 +36,9 @@ class Navbar extends React.Component {
             </NavLink> : null
           }
 
-        <button onClick={this.logout}>Logout</button>
+          {this.props.user.username ?
+          <button onClick={this.logout}>Logout</button> : null}
+
 
       </div>
     )
