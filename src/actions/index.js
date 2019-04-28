@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN } from '../actions/types';
+import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER } from '../actions/types';
 
 export const fetchGroups = () => {
   return (dispatch) => {
@@ -16,17 +16,24 @@ export const selectGroup = (groupId) => {
   return {type: SELECT_GROUP, payload: groupId}
 }
 
-// export const getUser = (userId) => {
-  // return (dispatch) => {
-  //   fetch(`http://localhost:3000/users/${userId}`)
-  //   .then(res => res.json())
-  //   .then(users => {
-  //     dispatch({
-  //       type: GET_USER,
-  //       payload: userId})
-  //   })
-  // }
-// }
+export const getUser = (currentUsername) => { //username mitch
+  return (dispatch) => {
+    fetch(`http://localhost:3000/users`)
+    .then(res => res.json())
+    .then(users => {
+      let userId;
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].username === currentUsername) {
+          userId = users[i].id;
+        }
+      }
+      console.log('userID', userId);
+      dispatch({
+        type: GET_USER,
+        payload: userId})
+    })
+  }
+}
 
 export const signmeUp = (user)=> {
   return dispatch => {
