@@ -30,9 +30,11 @@ class Navbar extends React.Component {
         </NavLink>
         <br/>
 
-          <NavLink to='/mygroups'>
-            My Groups
-          </NavLink>
+          {this.props.user.username ?
+            <NavLink to='/mygroups'>
+              My Groups
+            </NavLink> : null
+          }
 
         <button onClick={this.logout}>Logout</button>
 
