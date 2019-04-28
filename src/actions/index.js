@@ -16,6 +16,18 @@ export const selectGroup = (groupId) => {
   return {type: SELECT_GROUP, payload: groupId}
 }
 
+// export const getUser = (userId) => {
+  // return (dispatch) => {
+  //   fetch(`http://localhost:3000/users/${userId}`)
+  //   .then(res => res.json())
+  //   .then(users => {
+  //     dispatch({
+  //       type: GET_USER,
+  //       payload: userId})
+  //   })
+  // }
+// }
+
 export const signmeUp = (user)=> {
   return dispatch => {
     fetch('http://localhost:3000/users', {

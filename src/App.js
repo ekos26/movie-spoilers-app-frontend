@@ -42,7 +42,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     groups: state.groups,
-    filteredGroups: state.filteredGroups
+    filteredGroups: state.filteredGroups,
+    user: state.user
   }
 }
 
