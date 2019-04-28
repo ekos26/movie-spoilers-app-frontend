@@ -17,10 +17,17 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchGroups()
-    if (localStorage.getItem('token')) {
+    // if (localStorage.getItem('token')) {
       // this.props.autoLogin()
-    }
+    // }
   }
+  // render() {
+  //     return(
+  //       <div>
+  //         {this.props.user}
+  //       </div>
+  //     )
+  // }
 
   render() {
     return (
@@ -34,17 +41,20 @@ class App extends React.Component {
           <Route path='/signup' component={Signup} />
           <Route path='/' component={Home} />
         </Switch>
+        <div>
+          {2 + 2} 
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     groups: state.groups,
-    filteredGroups: state.filteredGroups,
     user: state.user
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchGroups, login } )(App));
+export default withRouter(connect(mapStateToProps, { fetchGroups } )(App));
