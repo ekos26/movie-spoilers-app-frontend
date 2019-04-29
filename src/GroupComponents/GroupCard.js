@@ -1,11 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectGroup, joinGroups } from '../actions/index';
+import { selectGroup, joinGroups, joinGroupsWithComment } from '../actions/index';
 // import GroupDetails from './GroupDetails';
 import {Link} from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 
 class GroupCard extends React.Component {
+
+  state = {
+    clicked: false,
+    renderFormClick: false
+  }
+
+  handleState = () => {
+    this.setState({
+      renderFormClick: !this.state.renderFormClick
+    })
+  }
 
   render() {
     // console.log(this.props.group.id);
@@ -21,18 +33,21 @@ class GroupCard extends React.Component {
               this.props.selectGroup(this.props.group.id)}}>More Details</button>
           </Link>
           <button onClick={() => {
-              this.props.joinGroups(this.props.user, this.props.group)}}>Join Group</button>
+            this.props.joinGroups(this.props.user, this.props.group)}}>Join Group</button>
+          <button onClick={() => this.handleState()}>Join Group With Spoiler</button>
+            {this.state.renderFormClick ? <CommentForm group={this.props.group} /> : null}
         </div>
     )
   }
 }
 
+// {this.state.clicked ?
+//   this.props.joinGroupsWithComment(this.props.content, this.props.user, this.props.group) : null}
+
 const mapStateToProps = state => {
   return {
-    groups: state.groups,
-    user: state.user,
-    myGroups: state.myGroups
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { selectGroup, joinGroups })(GroupCard);
+export default connect(mapStateToProps, { selectGroup, joinGroups, joinGroupsWithComment })(GroupCard);

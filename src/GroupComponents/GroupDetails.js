@@ -24,6 +24,9 @@ class GroupDetails extends React.Component {
         <button>Edit Group</button>
         <button>Delete Group</button>
         <button onClick={() => {
+            console.log('click')
+          }}>Add Spoiler</button>
+        <button onClick={() => {
             this.handleClick()
           }}>See Spoilers</button>
         {this.state.clicked ? this.props.group.comments.map(comment => comment.content) : null}

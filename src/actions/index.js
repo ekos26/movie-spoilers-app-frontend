@@ -39,6 +39,30 @@ export const joinGroups = (userObj, groupObj) => {
   }
 }
 
+export const joinGroupsWithComment = (comment, userObj, groupObj) => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/comments', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        content: comment,
+        user_id: userObj.id,
+        group_id: groupObj.id
+      })
+    })
+    .then(res => res.json())
+    .then(myGroups => {
+      debugger
+      dispatch({
+        type: JOIN_GROUPS,
+        payload: myGroups})
+    })
+  }
+}
+
 export const getUser = (currentUsername) => { //username mitch
   return (dispatch) => {
     fetch(`http://localhost:3000/users`)
