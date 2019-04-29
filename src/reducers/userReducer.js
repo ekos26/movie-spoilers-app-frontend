@@ -7,7 +7,6 @@ const userReducer = (state = initialState, action) => {
     case SIGNME_UP:
       return action.payload
     case LOGIN:
-    debugger
       return action.payload
     default:
       return state

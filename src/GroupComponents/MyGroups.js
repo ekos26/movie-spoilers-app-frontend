@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 class MyGroups extends React.Component {
 
   render () {
-    let token = localStorage.getItem('token');
     const groups = []
-    console.log(this.props.user)
     if (this.props.user) {
       this.props.user.groups.forEach((group,index) => {
         return groups.push(<li key={index}>{group.name}</li>)
