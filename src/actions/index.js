@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER } from '../actions/types';
+import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS } from '../actions/types';
 
 export const fetchGroups = () => {
   return (dispatch) => {
@@ -16,6 +16,29 @@ export const selectGroup = (groupId) => {
   return {type: SELECT_GROUP, payload: groupId}
 }
 
+export const joinGroups = (userObj, groupObj) => {
+  return (dispatch) => {
+    fetch('http://localhost:3000/user_groups', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        user_id: userObj.id,
+        group_id: groupObj.id
+      })
+    })
+    .then(res => res.json())
+    .then(myGroups => {
+      dispatch({
+        type: JOIN_GROUPS,
+        payload: myGroups})
+    })
+    .catch(err => console.log(err));
+  }
+}
+
 export const getUser = (currentUsername) => { //username mitch
   return (dispatch) => {
     fetch(`http://localhost:3000/users`)
@@ -27,7 +50,7 @@ export const getUser = (currentUsername) => { //username mitch
           userId = users[i].id;
         }
       }
-      console.log('userID', userId);
+      // console.log('userID', userId);
       dispatch({
         type: GET_USER,
         payload: userId})

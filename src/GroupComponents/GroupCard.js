@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectGroup } from '../actions/index';
+import { selectGroup, joinGroups } from '../actions/index';
 // import GroupDetails from './GroupDetails';
 import {Link} from 'react-router-dom';
 
@@ -20,6 +20,8 @@ class GroupCard extends React.Component {
             <button onClick={() => {
               this.props.selectGroup(this.props.group.id)}}>More Details</button>
           </Link>
+          <button onClick={() => {
+              this.props.joinGroups(this.props.user, this.props.group)}}>Join Group</button>
         </div>
     )
   }
@@ -27,8 +29,10 @@ class GroupCard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    groups: state.groups
+    groups: state.groups,
+    user: state.user,
+    myGroups: state.myGroups
   }
 }
 
-export default connect(mapStateToProps, { selectGroup })(GroupCard);
+export default connect(mapStateToProps, { selectGroup, joinGroups })(GroupCard);

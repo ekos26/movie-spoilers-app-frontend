@@ -47,7 +47,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     groups: state.groups,
     user: state.user

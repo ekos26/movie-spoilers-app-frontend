@@ -1,4 +1,4 @@
-import { SELECT_GROUP } from '../actions/types';
+import { SELECT_GROUP, JOIN_GROUPS } from '../actions/types';
 
 const initialState = null;
 
@@ -6,6 +6,8 @@ const groupReducer = (state = initialState, action) => {
   switch(action.type) {
     case SELECT_GROUP:
     // console.log('here', action);
+      return action.payload
+    case JOIN_GROUPS:
       return action.payload
     default:
       return state

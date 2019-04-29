@@ -7,7 +7,8 @@ import userReducer from './userReducer';
 const rootReducer = combineReducers({
   groups: groupsReducer,
   selectedGroup: groupReducer,
-  user: userReducer
+  user: userReducer,
+  myGroups: groupReducer
 })
 
 export default rootReducer;

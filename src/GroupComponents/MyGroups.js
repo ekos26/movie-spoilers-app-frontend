@@ -28,7 +28,8 @@ class MyGroups extends React.Component {
 const mapStateToProps = state => {
   console.log('state', state);
   return {
-    user: state.user
+    user: state.user,
+    myGroups: state.myGroups
   }
 }
 
