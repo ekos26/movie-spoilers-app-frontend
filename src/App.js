@@ -19,6 +19,7 @@ class App extends React.Component {
     this.props.fetchGroups()
     if (localStorage.getItem('token')) {
       this.props.getUser()
+      this.props.autoLogin()
     }
   }
   // render() {
@@ -54,4 +55,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, { fetchGroups, getUser } )(App));
+export default withRouter(connect(mapStateToProps, { fetchGroups, getUser, autoLogin } )(App));

@@ -41,8 +41,6 @@ class GroupCard extends React.Component {
   }
 }
 
-// {this.state.clicked ?
-//   this.props.joinGroupsWithComment(this.props.content, this.props.user, this.props.group) : null}
 
 const mapStateToProps = state => {
   return {

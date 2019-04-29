@@ -12,6 +12,8 @@ class Navbar extends React.Component {
   }
 
   render () {
+    let token = localStorage.getItem('token');
+
     return (
         <div className="navbar">
           <NavLink to='/'>
@@ -19,30 +21,30 @@ class Navbar extends React.Component {
           </NavLink>
         <br/>
 
-        {this.props.user.username ?
+        {!!token ?
             <NavLink to='/groups'>
               Groups
             </NavLink> : null
         }
       <br/>
 
-        {this.props.user.username ? null : <NavLink to='/login'>
+        {!!token ? null : <NavLink to='/login'>
           Login
         </NavLink>}
 
         <br/>
 
-          {this.props.user.username ?
+          {!!token ?
             <NavLink to='/mygroups'>
               My Groups
             </NavLink> : null
           }
 
-          {this.props.user.username ?
+          {!!token ?
           <button onClick={this.logout}>Logout</button> : null}
 
         <div>
-          {this.props.user.fullname ? `Welcome back ${this.props.user.fullname}!` : null}
+          {!!token && this.props.user ? `Welcome back ${this.props.user.fullname}!` : null}
         </div>
 
       </div>

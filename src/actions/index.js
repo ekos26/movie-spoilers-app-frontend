@@ -55,7 +55,6 @@ export const joinGroupsWithComment = (comment, userObj, groupObj) => {
     })
     .then(res => res.json())
     .then(myGroups => {
-      debugger
       dispatch({
         type: JOIN_GROUPS,
         payload: myGroups})
@@ -110,23 +109,23 @@ export const login = (user) => ({
   type: LOGIN, payload: user
 })
 
-// export const autoLogin = () => {
-//   return dispatch => {
-//     fetch('http://localhost:3000/api/auto_login', {
-//       headers: {
-//         'Authorization': localStorage.getItem('token')
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(data => {
-//         if (data.errors) {
-//           alert(data.errors)
-//         } else {
-//           dispatch({ type: 'LOGIN', payload: data.user})
-//         }
-//       })
-//   }
-// }
+export const autoLogin = () => {
+  return dispatch => {
+    fetch('http://localhost:3000/auto_login', {
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.errors) {
+          alert(data.errors)
+        } else {
+          dispatch({ type: 'LOGIN', payload: data.user})
+        }
+      })
+  }
+}
 
 // export const deletePainting = (paintingId) => {
 //   return {type: DELETE_PAINTING, payload: paintingId}
