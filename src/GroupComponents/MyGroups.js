@@ -9,9 +9,7 @@ class MyGroups extends React.Component {
       this.props.user.groups.forEach((group,index) => {
         return groups.push(<li key={index}>{group.name}</li>)
       })
-    } else {
-      return "You need to be logged in to see your groups."
-    }
+    } 
 
     return (
       <div>

@@ -2,7 +2,7 @@ import React from 'react';
 import {joinGroupsWithComment} from '../actions/index';
 import { connect } from 'react-redux';
 
-class CommentForm extends React.Component {
+class CommentFormJoinGroup extends React.Component {
 
   state = {
     comment:'',
@@ -22,7 +22,7 @@ class CommentForm extends React.Component {
     return (
       <form onSubmit={this.submitHandler}>
         <textarea placeholder="Spoiler" name="comment" value={this.state.comment} onChange={this.changeHandler}></textarea>
-        <input type="submit" value="Add Spoiler and Join Group" />
+        <input type="submit" value="Add Spoiler To Group" />
       </form>
     )
   }
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {joinGroupsWithComment})(CommentForm);
+export default connect(mapStateToProps, {joinGroupsWithComment})(CommentFormJoinGroup);

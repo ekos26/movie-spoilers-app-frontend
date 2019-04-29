@@ -22,13 +22,6 @@ class App extends React.Component {
       this.props.autoLogin()
     }
   }
-  // render() {
-  //     return(
-  //       <div>
-  //         {this.props.user}
-  //       </div>
-  //     )
-  // }
 
   render() {
     return (
@@ -48,7 +41,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     groups: state.groups,
     user: state.user

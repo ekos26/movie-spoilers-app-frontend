@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { selectGroup, joinGroups, joinGroupsWithComment } from '../actions/index';
 // import GroupDetails from './GroupDetails';
 import {Link} from 'react-router-dom';
-import CommentForm from './CommentForm';
 
 
 class GroupCard extends React.Component {
@@ -34,8 +33,6 @@ class GroupCard extends React.Component {
           </Link>
           <button onClick={() => {
             this.props.joinGroups(this.props.user, this.props.group)}}>Join Group</button>
-          <button onClick={() => this.handleState()}>Join Group With Spoiler</button>
-            {this.state.renderFormClick ? <CommentForm group={this.props.group} /> : null}
         </div>
     )
   }
