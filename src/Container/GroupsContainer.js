@@ -1,8 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GroupCard from "../GroupComponents/GroupCard"
+import GroupCard from "../GroupComponents/GroupCard";
+import CreateGroupForm from '../GroupComponents/CreateGroupForm';
+
 
 class GroupsContainer extends React.Component {
+
+  state = {
+    clicked: false
+  }
+
+  handleClick = () => {
+    this.setState({
+      clicked: !this.state.clicked
+    })
+  }
 
   render() {
     let groups = this.props.groups.map(group => {
@@ -11,6 +23,10 @@ class GroupsContainer extends React.Component {
 
     return (
       <div>
+        <button onClick={() => {
+            this.handleClick()
+          }}>Create Group</button>
+        {this.state.clicked ? <CreateGroupForm group={this.props.group}/> : null}
         {groups}
       </div>
     )
@@ -20,6 +36,7 @@ class GroupsContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     groups: state.groups,
+    movies: state.movies
   }
 }
 

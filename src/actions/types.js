@@ -4,3 +4,6 @@ export const SIGNME_UP = "SIGNME_UP";
 export const LOGIN = "LOGIN";
 export const GET_USER = "GET_USER";
 export const JOIN_GROUPS = "JOIN_GROUPS";
+export const CREATE_GROUP = "CREATE_GROUP";
+export const FETCH_MOVIES = "FETCH_MOVIES";
+export const ADD_MOVIE = "ADD_MOVIE";

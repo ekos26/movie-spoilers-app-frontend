@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import CommentFormJoinGroup from './CommentFormJoinGroup'
 import {withRouter} from 'react-router-dom';
 import { selectGroup } from '../actions/index';
-
+import Search from './Search';
 
 
 class GroupDetails extends React.Component {
 
   state = {
     clicked: false,
-    clickedComment: false
+    clickedComment: false,
+    clickedAddMovie: false
   }
   // console.log(props)
 
@@ -21,6 +22,12 @@ class GroupDetails extends React.Component {
   handleClick = () => {
     this.setState({
       clicked: !this.state.clicked
+    })
+  }
+
+  handleAddMovieClick = () => {
+    this.setState({
+      clickedAddMovie: !this.state.clickedAddMovie
     })
   }
 
@@ -39,13 +46,11 @@ class GroupDetails extends React.Component {
               this.props.group
               ? <>
               <h3>Group Name: {this.props.group.name}</h3>
-              <p>Name: {this.props.group.movies[0].title}</p>
-              <p>Year: {this.props.group.movies[0].year}</p>
-              <img alt="" src={this.props.group.movies[0].poster}/>
-              <p>Plot: {this.props.group.movies[0].plot}</p>
-              <h5>Users: {this.props.group.users.map(user => user.fullname)}</h5>
-              <button>Edit Group</button>
-              <button>Delete Group</button>
+              <p>Name: {this.props.group.movies[0] && this.props.group.movies[0].title}</p>
+              <p>Year: {this.props.group.movies[0] && this.props.group.movies[0].year}</p>
+              <img alt="" src={this.props.group.movies[0] && this.props.group.movies[0].poster}/>
+              <p>Plot: {this.props.group.movies[0] && this.props.group.movies[0].plot}</p>
+              <h5>Users: {this.props.group.movies[0] && this.props.group.users.map(user => user.fullname)}</h5>
               <button onClick={() => {
                   this.handleClickedComment()
                 }}>Add Spoiler</button>
@@ -54,7 +59,11 @@ class GroupDetails extends React.Component {
                     this.handleClick()
                   }}>See Spoilers</button>
                   {this.state.clicked ? this.props.group.comments.map(comment => comment.content) : null}
-                  </>
+                <button onClick={() => {
+                    this.handleAddMovieClick()
+                  }}>Add Movie</button>
+                {this.state.clickedAddMovie ? <Search /> : null}
+                </>
                 : null
             }
           </div>

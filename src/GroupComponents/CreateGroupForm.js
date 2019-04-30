@@ -1,4 +1,6 @@
 import React from 'react';
+import { createGroup } from '../actions/index';
+import { connect } from 'react-redux';
 
 class CreateGroupForm extends React.Component {
   state = {
@@ -9,11 +11,11 @@ class CreateGroupForm extends React.Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  // submitHandler = (event) => {
-  //   event.preventDefault();
-  //   this.props.submitEventHandler(this.state)
-  //   this.setState({name:''})
-  // };
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.createGroup(this.state)
+    this.setState({name:''})
+  };
 
   render () {
     return (
@@ -25,4 +27,10 @@ class CreateGroupForm extends React.Component {
   }
 }
 
-export default CreateGroupForm;
+const mapStateToProps = state => {
+  return {
+    groups: state.groups
+  }
+}
+
+export default connect(mapStateToProps, {createGroup})(CreateGroupForm);

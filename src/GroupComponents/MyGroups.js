@@ -27,6 +27,7 @@ class MyGroups extends React.Component {
           <h3>Fullname: {this.props.user.fullname}</h3>
           <ul>
             Your Groups: {groups}
+            <button>Leave Group</button>
           </ul>
           </> : null }
       </div>
