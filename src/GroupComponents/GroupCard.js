@@ -23,6 +23,7 @@ class GroupCard extends React.Component {
 
     return (
         <div>
+          <button>Create Group</button>
           <h3>Group Name: {this.props.group.name}</h3>
           <p>Movie: {this.props.group.movies[0].title}</p>
           <img alt="" src={this.props.group.movies[0].poster} />

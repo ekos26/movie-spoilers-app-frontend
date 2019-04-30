@@ -28,7 +28,7 @@ class Navbar extends React.Component {
         }
       <br/>
 
-        {!!token ? null : <NavLink to='/login'>
+        {!!token ? <button onClick={this.logout}>Logout</button> : <NavLink to='/login'>
           Login
         </NavLink>}
 
@@ -40,8 +40,6 @@ class Navbar extends React.Component {
             </NavLink> : null
           }
 
-          {!!token ?
-          <button onClick={this.logout}>Logout</button> : null}
 
         <div>
           {!!token && this.props.user ? `Welcome back ${this.props.user.fullname}!` : null}
@@ -52,6 +50,8 @@ class Navbar extends React.Component {
     )
   }
 }
+// {!!token ?
+//   <button onClick={this.logout}>Logout</button> : null}
 
 // { this.props.getUser(this.props.user.id) ?
 // : null

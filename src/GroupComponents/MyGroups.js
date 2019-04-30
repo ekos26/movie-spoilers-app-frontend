@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { selectGroup } from '../actions/index';
+import {withRouter} from 'react-router-dom';
+
 
 class MyGroups extends React.Component {
+
+  componentDidMount() {
+    this.props.selectGroup(parseInt(this.props.match.params.id))
+  }
 
   render () {
     const groups = []
@@ -9,15 +16,19 @@ class MyGroups extends React.Component {
       this.props.user.groups.forEach((group,index) => {
         return groups.push(<li key={index}>{group.name}</li>)
       })
-    } 
+    }
 
     return (
       <div>
-        <h3>Username: {this.props.user.username}</h3>
-        <h3>Fullname: {this.props.user.fullname}</h3>
-        <ul>
-          Your Groups: {groups}
-        </ul>
+        {
+          this.props.user ?
+          <>
+          <h3>Username: {this.props.user.username}</h3>
+          <h3>Fullname: {this.props.user.fullname}</h3>
+          <ul>
+            Your Groups: {groups}
+          </ul>
+          </> : null }
       </div>
     )
   }
@@ -31,4 +42,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(MyGroups);
+export default withRouter(connect(mapStateToProps, {selectGroup})(MyGroups));
