@@ -59,10 +59,10 @@ class GroupDetails extends React.Component {
                     this.handleClick()
                   }}>See Spoilers</button>
                   {this.state.clicked ? this.props.group.comments.map(comment => comment.content) : null}
-                <button onClick={() => {
-                    this.handleAddMovieClick()
-                  }}>Add Movie</button>
-                {this.state.clickedAddMovie ? <Search movie={this.props.group.movie} group={this.props.group}/> : null}
+                  <button onClick={() => {
+                      this.handleAddMovieClick()
+                    }}>Add Movie</button>
+                  {this.state.clickedAddMovie ? <Search /> : null}
                 </>
                 : null
             }
