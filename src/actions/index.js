@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, FETCH_MOVIES, ADD_MOVIE } from '../actions/types';
+import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, ADD_MOVIE_TO_GROUP } from '../actions/types';
 
 export const fetchGroups = () => {
   return (dispatch) => {
@@ -11,22 +11,6 @@ export const fetchGroups = () => {
     })
   }
 }
-
-// export const fetchMovies = () => {
-//   const convertedInput = this.props.userInput.split(" ").join("%20")
-//   return (dispatch) => {
-//     fetch('http://localhost:3000/api/movies')
-//     .then(res => res.json())
-//     .then(movies => {
-//       dispatch({
-//         type: FETCH_MOVIES,
-//         payload: movies,
-//         title: convertedInput
-//       })
-//     })
-//   }
-// }
-
 
 export const createGroup = (groupObj) => {
   return (dispatch) => {
@@ -65,8 +49,9 @@ export const addMovie = (movieObj, groupObj) => {
     .then(res => res.json())
     .then(movie => {
       dispatch({
-        type: ADD_MOVIE,
-        payload: movie})
+        type: ADD_MOVIE_TO_GROUP,
+        payload: movie
+      })
     })
     .catch(err => console.log(err));
   }
@@ -133,7 +118,6 @@ export const getUser = (currentUsername) => { //username mitch
           userId = users[i].id;
         }
       }
-      // console.log('userID', userId);
       dispatch({
         type: GET_USER,
         payload: userId})

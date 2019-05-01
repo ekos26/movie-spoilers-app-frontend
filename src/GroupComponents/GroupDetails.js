@@ -62,7 +62,7 @@ class GroupDetails extends React.Component {
                 <button onClick={() => {
                     this.handleAddMovieClick()
                   }}>Add Movie</button>
-                {this.state.clickedAddMovie ? <Search /> : null}
+                {this.state.clickedAddMovie ? <Search movie={this.props.group.movie} group={this.props.group}/> : null}
                 </>
                 : null
             }

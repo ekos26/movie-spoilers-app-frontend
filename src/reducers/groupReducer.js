@@ -5,7 +5,6 @@ const initialState = null;
 const groupReducer = (state = initialState, action) => {
   switch(action.type) {
     case SELECT_GROUP:
-    // console.log('here', action);
       return action.payload
     case JOIN_GROUPS:
       return action.payload

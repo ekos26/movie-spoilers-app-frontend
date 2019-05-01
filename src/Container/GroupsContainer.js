@@ -35,8 +35,7 @@ class GroupsContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    groups: state.groups,
-    movies: state.movies
+    groups: state.groups
   }
 }
 

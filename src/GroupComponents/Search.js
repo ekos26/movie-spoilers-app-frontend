@@ -1,4 +1,7 @@
 import React from 'react'
+import { addMovie } from '../actions/index';
+import { connect } from 'react-redux';
+
 
 class Search extends React.Component {
 
@@ -11,8 +14,8 @@ class Search extends React.Component {
     this.setState({searchTerm: event.target.value})
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = (event) => {
+    event.preventDefault();
     let newSearchTerm = this.state.searchTerm.split(" ").join("+");
     fetch('http://localhost:3000/api/movies', {
       method: 'POST',
@@ -52,7 +55,7 @@ class Search extends React.Component {
           <img alt="" src={this.state.movieObj.Poster}/>
           <p>Plot: {this.state.movieObj.Plot}</p>
           <button onClick={() => {
-            console.log('click')
+            this.props.addMovie(this.state.movieObj, this.props.group)
           }}>Add Selected Movie To Group</button>
         </div> : null
       }
@@ -61,4 +64,11 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    groups: state.groups
+  }
+}
+
+export default connect(mapStateToProps, {addMovie})(Search);
