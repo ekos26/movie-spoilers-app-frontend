@@ -35,7 +35,6 @@ export const createGroup = (groupObj) => {
 
 export const addMovie = (movieObj, groupObj) => {
   let newMovieObj = parseInt(movieObj.imdbID.slice(2));
-  console.log(newMovieObj)
   return (dispatch) => {
     fetch('http://localhost:3000/movie_groups', {
       method: 'POST',
@@ -90,7 +89,8 @@ export const joinGroups = (userObj, groupObj) => {
   }
 }
 
-export const joinGroupsWithComment = (comment, userObj, groupObj) => {
+export const joinGroupsWithComment = (comment, userObj, movieObj) => {
+  console.log('movieObj', movieObj);
   return (dispatch) => {
     fetch('http://localhost:3000/comments', {
       method: 'POST',
@@ -101,7 +101,7 @@ export const joinGroupsWithComment = (comment, userObj, groupObj) => {
       body: JSON.stringify({
         content: comment,
         user_id: userObj.id,
-        group_id: groupObj.id
+        movie_id: movieObj.id
       })
     })
     .then(res => res.json())
@@ -113,7 +113,7 @@ export const joinGroupsWithComment = (comment, userObj, groupObj) => {
   }
 }
 
-export const getUser = (currentUsername) => { //username mitch
+export const getUser = (currentUsername) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/users`)
     .then(res => res.json())

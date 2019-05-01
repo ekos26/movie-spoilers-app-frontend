@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectGroup, joinGroups, joinGroupsWithComment } from '../actions/index';
-// import GroupDetails from './GroupDetails';
 import {Link} from 'react-router-dom';
 
 

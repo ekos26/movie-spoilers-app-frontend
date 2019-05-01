@@ -14,7 +14,7 @@ class CommentFormJoinGroup extends React.Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.group)
+    this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.group.movies[0])
     this.setState({comment:''})
   }
 
@@ -22,7 +22,7 @@ class CommentFormJoinGroup extends React.Component {
     return (
       <form onSubmit={this.submitHandler}>
         <textarea placeholder="Spoiler" name="comment" value={this.state.comment} onChange={this.changeHandler}></textarea>
-        <input type="submit" value="Add Spoiler To Group" />
+        <input type="submit" value="Add Spoiler To Movie" />
       </form>
     )
   }

@@ -33,15 +33,8 @@ class Search extends React.Component {
       })
     })
   }
-  // , this.filterHandler()
-  // filterHandler = () => {
-  //   const filter = this.state.eventsArray.filter(event => {
-  //     return event.address.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-  //   })
-  //   this.setState({filteredArray: filter})
-  // };
+
   render () {
-    console.log(this.state.movieObj);
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
