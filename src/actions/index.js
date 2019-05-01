@@ -34,6 +34,8 @@ export const createGroup = (groupObj) => {
 }
 
 export const addMovie = (movieObj, groupObj) => {
+  let newMovieObj = parseInt(movieObj.imdbID.slice(2));
+  console.log(newMovieObj)
   return (dispatch) => {
     fetch('http://localhost:3000/movie_groups', {
       method: 'POST',
@@ -42,7 +44,11 @@ export const addMovie = (movieObj, groupObj) => {
         Authorization: localStorage.getItem("token")
       },
       body: JSON.stringify({
-        movie_id: movieObj.id,
+        movie_id: newMovieObj,
+        title: movieObj.Title,
+        year: movieObj.Year,
+        poster: movieObj.Poster,
+        plot: movieObj.Plot,
         group_id: groupObj.id
       })
     })
