@@ -112,7 +112,7 @@ export const joinGroupsWithComment = (comment, userObj, movieObj) => {
   }
 }
 
-export const getUser = (currentUsername) => { 
+export const getUser = (currentUsername) => {
   return (dispatch) => {
     fetch(`http://localhost:3000/users`)
     .then(res => res.json())

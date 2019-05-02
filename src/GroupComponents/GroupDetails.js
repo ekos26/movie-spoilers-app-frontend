@@ -11,16 +11,19 @@ class GroupDetails extends React.Component {
   state = {
     clicked: false,
     clickedComment: false,
-    clickedAddMovie: false
+    clickedAddMovie: false,
+    spoiledMovie: null
   }
 
   componentDidMount() {
     this.props.selectGroup(parseInt(this.props.match.params.id))
   }
 
-  handleClick = (selectedMovieId) => {
+  handleClick = (selectedMovie) => {
+    console.log(selectedMovie.id);
     this.setState({
-      clicked: !this.state.clicked
+      clicked: !this.state.clicked,
+      spoiledMovie: selectedMovie
     })
   }
 
@@ -60,9 +63,10 @@ class GroupDetails extends React.Component {
                   }}>Add Spoiler</button>
                 {this.state.clickedComment ? <CommentFormJoinGroup group={this.props.group} selectedMovie={singleMovie.id}/> : null}
                   <button onClick={() => {
-                      this.handleClick(singleMovie.id)
+                      console.log(singleMovie);
+                      this.handleClick(singleMovie)
                     }}>See Spoilers</button>
-                  {this.state.clicked ?  singleMovie.comments.map(comment => comment.content) : null}
+                  {this.state.clicked && this.state.spoiledMovie === singleMovie ?  singleMovie.comments.map(comment => comment.content) : null}
               </div>
               ))}
                 </>
