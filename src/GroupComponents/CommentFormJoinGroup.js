@@ -14,7 +14,7 @@ class CommentFormJoinGroup extends React.Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.group.movies[0])
+    this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.selectedMovie)
     this.setState({comment:''})
   }
 

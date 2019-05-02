@@ -90,7 +90,6 @@ export const joinGroups = (userObj, groupObj) => {
 }
 
 export const joinGroupsWithComment = (comment, userObj, movieObj) => {
-  console.log('movieObj', movieObj);
   return (dispatch) => {
     fetch('http://localhost:3000/comments', {
       method: 'POST',
@@ -101,7 +100,7 @@ export const joinGroupsWithComment = (comment, userObj, movieObj) => {
       body: JSON.stringify({
         content: comment,
         user_id: userObj.id,
-        movie_id: movieObj.id
+        movie_id: movieObj
       })
     })
     .then(res => res.json())
@@ -113,7 +112,7 @@ export const joinGroupsWithComment = (comment, userObj, movieObj) => {
   }
 }
 
-export const getUser = (currentUsername) => {
+export const getUser = (currentUsername) => { 
   return (dispatch) => {
     fetch(`http://localhost:3000/users`)
     .then(res => res.json())
