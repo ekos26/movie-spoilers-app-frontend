@@ -4,7 +4,6 @@ import CommentFormJoinGroup from './CommentFormJoinGroup'
 import {withRouter} from 'react-router-dom';
 import { selectGroup } from '../actions/index';
 import Search from './Search';
-import {joinGroupsWithComment} from '../actions/index';
 
 
 class GroupDetails extends React.Component {
@@ -14,7 +13,6 @@ class GroupDetails extends React.Component {
     clickedComment: false,
     clickedAddMovie: false,
     spoiledMovie: null,
-    renderedMovie: false
   }
 
   componentDidMount() {
@@ -41,17 +39,9 @@ class GroupDetails extends React.Component {
     })
   }
 
-  renderCommentInMovie = () => {
-    // this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.selectedMovie)
-    this.setState({
-      renderedMovie: true
-    })
-  }
-
   render() {
     console.log('render???');
       return (
-
             <div>
               {
                 this.props.group
@@ -101,4 +91,4 @@ class GroupDetails extends React.Component {
 
 
 
-  export default withRouter(connect(mapStateToProps, {selectGroup, joinGroupsWithComment})(GroupDetails));
+  export default withRouter(connect(mapStateToProps, {selectGroup})(GroupDetails));

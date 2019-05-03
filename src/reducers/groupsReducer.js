@@ -29,8 +29,22 @@ const groupsReducer = (state = initialState, action) => {
       return {...state, groups: newGroupsArr}
 
     case ADD_SPOILER_TO_MOVIE:
-    debugger
-    return state
+
+    const newPickedGroup = [...state.groups].find(group => group.id === state.selectedGroup)
+    const pickedMovie = newPickedGroup.movies.find(movie => movie.id === action.payload.movie.id)
+    pickedMovie.comments.push(action.payload)
+    const alteredPickedMovies = newPickedGroup.movies.filter(movie => movie.id !== pickedMovie.id)
+    const finalPickedGroup = [...alteredPickedMovies, pickedMovie]
+
+    const newGroupsArray = [...state.groups].map(group => {
+      if (group.id === finalPickedGroup.id) {
+        return finalPickedGroup
+      } else {
+        return group
+      }
+    })
+
+    return {...state, groups: newGroupsArray}
 
     default:
       return state
