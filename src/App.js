@@ -42,9 +42,10 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    groups: state.groups,
+    groups: state.groups.groups,
     user: state.user
   }
+  // console.log(state);
 }
 
 export default withRouter(connect(mapStateToProps, { fetchGroups, getUser, autoLogin } )(App));

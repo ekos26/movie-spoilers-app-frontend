@@ -42,7 +42,7 @@ class Navbar extends React.Component {
 
 
         <div>
-          {!!token && this.props.user ? `Welcome back ${this.props.user.fullname}!` : null}
+          {!!token && this.props.user ? `Welcome ${this.props.user.fullname}!` : null}
         </div>
 
       </div>

@@ -28,6 +28,7 @@ class CreateGroupForm extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log('mapstate', state);
   return {
     groups: state.groups
   }

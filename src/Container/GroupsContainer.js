@@ -17,9 +17,14 @@ class GroupsContainer extends React.Component {
   }
 
   render() {
+    // console.log('LOOKIT THESE PROPS', this.props.groups);
+
     let groups = this.props.groups.map(group => {
-      return <GroupCard key={group.id} group={group}/>
+      // console.log('THIS IS THE GROUP', group.movies);
+      return <GroupCard key={group.id} group={group} movies={group.movies}/>
     })
+
+    // console.log('THIS IS WHAT WE NEED TO RERENDER');
 
     return (
       <div>
@@ -34,8 +39,9 @@ class GroupsContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
+  // console.log(state.groups.groups);
   return {
-    groups: state.groups
+    groups: state.groups.groups
   }
 }
 

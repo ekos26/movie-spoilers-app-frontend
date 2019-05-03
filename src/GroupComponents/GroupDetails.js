@@ -4,6 +4,7 @@ import CommentFormJoinGroup from './CommentFormJoinGroup'
 import {withRouter} from 'react-router-dom';
 import { selectGroup } from '../actions/index';
 import Search from './Search';
+import {joinGroupsWithComment} from '../actions/index';
 
 
 class GroupDetails extends React.Component {
@@ -12,7 +13,8 @@ class GroupDetails extends React.Component {
     clicked: false,
     clickedComment: false,
     clickedAddMovie: false,
-    spoiledMovie: null
+    spoiledMovie: null,
+    renderedMovie: false
   }
 
   componentDidMount() {
@@ -20,7 +22,6 @@ class GroupDetails extends React.Component {
   }
 
   handleClick = (selectedMovie) => {
-    console.log(selectedMovie.id);
     this.setState({
       clicked: !this.state.clicked,
       spoiledMovie: selectedMovie
@@ -33,14 +34,24 @@ class GroupDetails extends React.Component {
     })
   }
 
-  handleClickedComment = (selectedMovieId) => {
+  handleClickedComment = (selectedMovie) => {
     this.setState({
-      clickedComment: !this.state.clickedComment
+      clickedComment: !this.state.clickedComment,
+      spoiledMovie: selectedMovie
+    })
+  }
+
+  renderCommentInMovie = () => {
+    // this.props.joinGroupsWithComment(this.state.comment, this.props.user, this.props.selectedMovie)
+    this.setState({
+      renderedMovie: true
     })
   }
 
   render() {
+    console.log('render???');
       return (
+
             <div>
               {
                 this.props.group
@@ -49,7 +60,7 @@ class GroupDetails extends React.Component {
                 <h5>Users: {this.props.group.users.map(user => user.fullname)}</h5>
                 <button onClick={() => {
                     this.handleAddMovieClick()
-                  }}>Add Movie</button>
+                  }}>Search For Movie</button>
                 {this.state.clickedAddMovie ? <Search group={this.props.group}/> : null}
 
               {this.props.group.movies.map(singleMovie => (
@@ -59,11 +70,10 @@ class GroupDetails extends React.Component {
                 <img alt="" src={singleMovie.poster}/>
                 <p>Plot: {singleMovie.plot}</p>
                 <button onClick={() => {
-                    this.handleClickedComment(singleMovie.id)
+                    this.handleClickedComment(singleMovie)
                   }}>Add Spoiler</button>
-                {this.state.clickedComment ? <CommentFormJoinGroup group={this.props.group} selectedMovie={singleMovie.id}/> : null}
+                {this.state.clickedComment && this.state.spoiledMovie === singleMovie ? <CommentFormJoinGroup group={this.props.group} selectedMovie={singleMovie.id}/> : null}
                   <button onClick={() => {
-                      console.log(singleMovie);
                       this.handleClick(singleMovie)
                     }}>See Spoilers</button>
                   {this.state.clicked && this.state.spoiledMovie === singleMovie ?  singleMovie.comments.map(comment => comment.content) : null}
@@ -77,16 +87,18 @@ class GroupDetails extends React.Component {
     }
   }
 
-  // this.props.group.comments.map(comment => comment.content)
 
   const mapStateToProps = state => {
+    console.log(state.groups.groups);
+    console.log('selected', state.groups.selectedGroup);
     return {
-      group: state.groups.find(group => {
-        return group.id === state.selectedGroup
+      group: state.groups.groups.find(group => {
+        return group.id === state.groups.selectedGroup
       })
     }
+    // console.log('STATE', state);
   }
 
 
 
-  export default withRouter(connect(mapStateToProps, {selectGroup})(GroupDetails));
+  export default withRouter(connect(mapStateToProps, {selectGroup, joinGroupsWithComment})(GroupDetails));

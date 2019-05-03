@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class CommentFormJoinGroup extends React.Component {
 
   state = {
-    comment:'',
+    comment:''
   }
 
   changeHandler = (event) => {

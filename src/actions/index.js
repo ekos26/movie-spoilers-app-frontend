@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, ADD_MOVIE_TO_GROUP } from '../actions/types';
+import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, ADD_MOVIE_TO_GROUP, ADD_SPOILER_TO_MOVIE } from '../actions/types';
 
 export const fetchGroups = () => {
   return (dispatch) => {
@@ -53,6 +53,7 @@ export const addMovie = (movieObj, groupObj) => {
     })
     .then(res => res.json())
     .then(movie => {
+      console.log('MOVIE', movie);
       dispatch({
         type: ADD_MOVIE_TO_GROUP,
         payload: movie
@@ -106,7 +107,7 @@ export const joinGroupsWithComment = (comment, userObj, movieObj) => {
     .then(res => res.json())
     .then(myGroups => {
       dispatch({
-        type: JOIN_GROUPS,
+        type: ADD_SPOILER_TO_MOVIE,
         payload: myGroups})
     })
   }
