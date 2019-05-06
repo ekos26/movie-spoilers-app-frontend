@@ -6,9 +6,85 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://gorodskidok48.ru/upload/iblock/bf1/bf130e0ca47260a2d5fc37ba096fb925.jpg")
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.header h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 150px;
+  text-align: center;
+  padding-top: 150px;
+}
+
+.header p {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 50px;
+  color: #275BC8;
+}
+
+.welcome {
+  font-family: 'Kalam', cursive;
+  font-size: 20px;
+}
+
+.sign {
+  text-align: center;
+  color: white;
+}
+
+.ui.container {
+  margin-top: 125px;
+}
+
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+}
+
+.groupcard {
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
+  background-color: rgb(203, 223, 239);
+  text-align: center;
+  width: 65%;
+  border-radius: 6px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.ui.massive.menu {
+  background-color: rgb(191, 184, 222);
+  display: flex;
+  justify-content: space-around;
+}
+
+.ui.blue.center.aligned.header {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 35px;
+}
+
+.ui.huge.header {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 35px;
+}
+
+.ui.basic.blue.button {
+  display: block;
+  margin: auto;
+}
+
+.create.form.button {
+  margin-top: 2%;
 }

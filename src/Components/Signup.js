@@ -25,12 +25,47 @@ class Signup extends Component {
 
   render () {
     return (
-        <form onSubmit={this.submitHandler}>
-          <input type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.changeHandler} />
-          <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.changeHandler} />
-          <input type="text" placeholder="Full name" name="fullname" value={this.state.fullname} onChange={this.changeHandler} />
-          <input type="submit" value="Signup" />
+      <div className="ui container">
+      <div className="ui center aligned grid">
+        <div className="eight wide column">
+        <div className="ui container">
+          <h1 className="ui huge header">
+            <img className="image" src="https://cdn4.iconfinder.com/data/icons/eldorado-multimedia/40/movie_1-256.png" alt="" />
+            Please sign up
+          </h1>
+        <form className="ui large form" onSubmit={this.submitHandler}>
+          <div className="ui stacked segment">
+            <div className="field">
+              <div className="ui input">
+                <div className="ui left icon input">
+                <i className="user icon"></i>
+                <input type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.changeHandler} />
+              </div>
+            </div>
+            </div>
+            <div className="field">
+              <div className="ui input">
+                <div className="ui left icon input">
+                  <i className="lock icon"></i>
+                <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.changeHandler} />
+              </div>
+            </div>
+            </div>
+            <div className="field">
+              <div className="ui input">
+                <div className="ui left icon input">
+                  <i className="user circle icon"></i>
+                <input type="text" placeholder="Full name" name="fullname" value={this.state.fullname} onChange={this.changeHandler} />
+              </div>
+            </div>
+            </div>
+              <input className="ui fluid large purple button" type="submit" value="Signup" />
+              </div>
         </form>
+      </div>
+      </div>
+    </div>
+  </div>
     )
   }
 }

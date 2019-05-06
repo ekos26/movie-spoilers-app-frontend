@@ -6,13 +6,18 @@ const Home = () => {
 
   return (
     <div>
-      <div>
+      <div className="header">
         <h1>Welcome to Rosebud </h1>
         <p>The Movie App where it is safe to share spoilers!</p>
         {!!token ?
-          null : <Link to="/signup">
-            Signup
-          </Link>}
+          null :
+          <div className="sign">
+            <div className="ui large violet button">
+              <Link to="/signup">
+                New? Sign up!
+              </Link>
+            </div>
+          </div>}
 
       </div>
     </div>

@@ -19,10 +19,27 @@ class CreateGroupForm extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.submitHandler}>
-        <input type="text" placeholder="Group Name" name="name" value={this.state.name} onChange={this.changeHandler}/>
-        <input type="submit" value="Create new group" />
+      <div className="create form button">
+      <div className="ui center aligned grid">
+      <form className="ui form" onSubmit={this.submitHandler}>
+        <div>
+          <div className="field">
+            <input type="text" placeholder="Group Name" name="name" value={this.state.name} onChange={this.changeHandler}/>
+            <button className="ui animated blue button" type="submit">
+              <div className="visible content">
+                Submit new group
+              </div>
+              <div className="hidden content">
+                <i aria-hidden="true" className="film icon"></i>
+                <i aria-hidden="true" className="film icon"></i>
+                <i aria-hidden="true" className="film icon"></i>
+              </div>
+            </button>
+          </div>
+        </div>
       </form>
+      </div>
+      </div>
     )
   }
 }

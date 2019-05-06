@@ -37,9 +37,19 @@ class Search extends React.Component {
   render () {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="search" value={this.state.searchTerm} onChange={this.searchHandler} placeholder="Search For Movie"/>
-      </form>
+
+            <form onSubmit={this.handleSubmit}>
+              <div className="ui grid">
+                <div className="six wide column">
+                  <div className="ui search">
+                    <div className="ui icon input">
+                      <i className="search icon"></i>
+                          <input className="prompt" type="text" name="search" value={this.state.searchTerm} onChange={this.searchHandler} placeholder="search"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
 
       {this.state.movieObj ?
         <div>

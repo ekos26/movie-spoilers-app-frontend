@@ -15,51 +15,52 @@ class Navbar extends React.Component {
     let token = localStorage.getItem('token');
 
     return (
-        <div className="navbar">
-          <NavLink to='/'>
+        <div className="ui massive menu">
+          <div className="active item">
+          <NavLink to='/' className="home">
             Home
           </NavLink>
-        <br/>
+          </div>
+
 
         {!!token ?
-            <NavLink to='/groups'>
+          <div className="item">
+            <NavLink to='/groups' className="home">
               Groups
-            </NavLink> : null
+            </NavLink></div> : null
         }
-      <br/>
 
-        {!!token ? <button onClick={this.logout}>Logout</button> : <NavLink to='/login'>
+
+        {!!token ?
+          <div className="item">
+          <NavLink to='/mygroups' className="home">
+            My Groups
+          </NavLink></div> : null
+        }
+
+
+
+        {!!token ? <div className="item"><button className="ui blue basic button" onClick={this.logout}>Logout</button></div> :
+        <div className="item"><NavLink to='/login' className="home">
           Login
-        </NavLink>}
-
-        <br/>
-
-          {!!token ?
-            <NavLink to='/mygroups'>
-              My Groups
-            </NavLink> : null
-          }
+        </NavLink>
+      </div>}
 
 
-        <div>
-          {!!token && this.props.user ? `Welcome ${this.props.user.fullname}!` : null}
+        <div className="welcome">
+          <div className="item">
+          {!!token && this.props.user ? `Hello ${this.props.user.fullname}!` : null}
         </div>
+          </div>
 
       </div>
 
     )
   }
 }
-// {!!token ?
-//   <button onClick={this.logout}>Logout</button> : null}
 
-// { this.props.getUser(this.props.user.id) ?
-// : null
-// }
-//change mygroups to only when you are logged in
 
 const mapStateToProps = state => {
-  // console.log('state', state);
   return {
     user: state.user
   }
@@ -67,5 +68,3 @@ const mapStateToProps = state => {
 
 
 export default withRouter(connect(mapStateToProps)(Navbar));
-
-// { getUser }

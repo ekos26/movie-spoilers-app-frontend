@@ -18,20 +18,19 @@ class GroupCard extends React.Component {
   }
 
   render() {
-    // console.log('propsss', this.props)
-    // console.log('movies', this.props.movies);
     return (
-        <div>
+        <div className="groupcard">
           <h3>Group Name: {this.props.group.name}</h3>
 
           <p>Movie: {this.props.movies[0] && this.props.movies[0].title}</p>
           <img alt="" src={this.props.movies[0] && this.props.movies[0].poster} />
-          <h5>Users: {this.props.movies[0] && this.props.group.users.map(user => user.fullname)}</h5>
+          <h5>Users: </h5>
+            <p>{this.props.movies[0] && this.props.group.users.map(user => user.fullname + " ")}</p>
           <Link to={`/groups/${this.props.group.id}`}>
-            <button onClick={() => {
+            <button className="ui left attached button" onClick={() => {
               this.props.selectGroup(this.props.group.id)}}>More Details</button>
           </Link>
-          <button onClick={() => {
+          <button className="ui right attached primary button" onClick={() => {
             this.props.joinGroups(this.props.user, this.props.group)}}>Join Group</button>
         </div>
     )

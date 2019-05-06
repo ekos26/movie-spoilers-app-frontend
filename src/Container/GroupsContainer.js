@@ -17,29 +17,27 @@ class GroupsContainer extends React.Component {
   }
 
   render() {
-    // console.log('LOOKIT THESE PROPS', this.props.groups);
 
     let groups = this.props.groups.map(group => {
-      // console.log('THIS IS THE GROUP', group.movies);
       return <GroupCard key={group.id} group={group} movies={group.movies}/>
     })
 
-    // console.log('THIS IS WHAT WE NEED TO RERENDER');
 
     return (
       <div>
-        <button onClick={() => {
+        <button className="ui basic blue button" onClick={() => {
             this.handleClick()
           }}>Create Group</button>
         {this.state.clicked ? <CreateGroupForm group={this.props.group}/> : null}
-        {groups}
+        <div className="groups">
+          {groups}
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state.groups.groups);
   return {
     groups: state.groups.groups
   }
