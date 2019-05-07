@@ -17,7 +17,7 @@ class GroupsContainer extends React.Component {
   }
 
   render() {
-
+    console.log('in group container', this.props);
     let groups = this.props.groups.map(group => {
       return <GroupCard key={group.id} group={group} movies={group.movies}/>
     })

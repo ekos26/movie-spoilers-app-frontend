@@ -88,3 +88,22 @@ code {
 .create.form.button {
   margin-top: 2%;
 }
+
+.group.details {
+  text-align: center;
+}
+
+.search.object {
+  margin-top: 1%;
+  margin-left: 39%;
+}
+
+.searched.movie {
+  margin-top: 2%;
+  margin-right: 30%;
+  text-align: center;
+  width: 45%;
+  border-radius: 6px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}

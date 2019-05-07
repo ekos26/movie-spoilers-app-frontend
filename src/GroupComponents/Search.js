@@ -36,7 +36,7 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="search object">
 
             <form onSubmit={this.handleSubmit}>
               <div className="ui grid">
@@ -52,14 +52,18 @@ class Search extends React.Component {
             </form>
 
       {this.state.movieObj ?
-        <div>
+        <div className="searched movie">
+
+            <div className="groupcard">
           <h3>Name: {this.state.movieObj.Title}</h3>
           <p>Year: {this.state.movieObj.Year}</p>
           <img alt="" src={this.state.movieObj.Poster}/>
           <p>Plot: {this.state.movieObj.Plot}</p>
-          <button onClick={() => {
+          <button className="ui blue animated button" onClick={() => {
             this.props.addMovie(this.state.movieObj, this.props.group)
-          }}>Add Selected Movie To Group</button>
+          }}>Add Movie To Group</button>
+          </div>
+
         </div> : null
       }
       </div>

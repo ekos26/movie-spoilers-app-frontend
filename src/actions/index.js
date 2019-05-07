@@ -1,4 +1,4 @@
-import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, ADD_MOVIE_TO_GROUP, ADD_SPOILER_TO_MOVIE } from '../actions/types';
+import { FETCH_GROUPS, SELECT_GROUP, SIGNME_UP, LOGIN, GET_USER, JOIN_GROUPS, CREATE_GROUP, ADD_MOVIE_TO_GROUP, ADD_SPOILER_TO_MOVIE, LEAVE_GROUP, USER_JOIN_GROUP, LEAVE_USER_GROUP } from '../actions/types';
 
 export const fetchGroups = () => {
   return (dispatch) => {
@@ -9,6 +9,19 @@ export const fetchGroups = () => {
         type: FETCH_GROUPS,
         payload: groups})
     })
+  }
+}
+
+export const leaveGroup = (data) => {
+  return (dispatch) => {
+    return dispatch({ type: LEAVE_GROUP, payload: data })
+  }
+}
+
+export const leaveUserGroup = (data) => {
+  return (dispatch) => {
+    console.log('DATA LEAVE', data);
+    return dispatch({ type: LEAVE_USER_GROUP, payload: data })
   }
 }
 
@@ -67,6 +80,12 @@ export const selectGroup = (groupId) => {
   return {type: SELECT_GROUP, payload: groupId}
 }
 
+export const userJoinGroup = (group) => {
+  return (dispatch) => {
+    return dispatch({ type: USER_JOIN_GROUP, payload: group })
+  }
+}
+
 export const joinGroups = (userObj, groupObj) => {
   return (dispatch) => {
     fetch('http://localhost:3000/user_groups', {
@@ -81,10 +100,13 @@ export const joinGroups = (userObj, groupObj) => {
       })
     })
     .then(res => res.json())
-    .then(myGroups => {
+    .then(data => {
+      console.log("JOIN GROUPS", data)
       dispatch({
         type: JOIN_GROUPS,
-        payload: myGroups})
+        payload: data
+      })
+      // login(data.user)
     })
     .catch(err => console.log(err));
   }

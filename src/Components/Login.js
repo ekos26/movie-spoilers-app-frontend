@@ -43,7 +43,7 @@ class Login extends Component {
     return (
       <div className="ui container">
       <div className="ui center aligned grid">
-        <div className="eight wide column">
+        <div className="six wide column">
           <div className="ui container">
         <h1 className="ui blue center aligned header">
           <img className="image" src="https://cdn4.iconfinder.com/data/icons/eldorado-multimedia/40/movie_1-256.png" alt="" />
