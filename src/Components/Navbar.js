@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
     return (
         <div className="ui massive menu">
-          <div className="active item">
+          <div className="item">
           <NavLink to='/' className="home">
             Home
           </NavLink>

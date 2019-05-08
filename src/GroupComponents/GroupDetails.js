@@ -41,27 +41,32 @@ class GroupDetails extends React.Component {
 
   render() {
     // console.log('render???');
+    let name = []
+     if (this.props.group) {
+       this.props.group.users.map(user => name.push(user.fullname))
+     }
       return (
             <div>
               {
                 this.props.group
-                ? <div>
+                ? <div className="whole thing">
                 <div className="group details">
-                <h3>Group Name: {this.props.group.name}</h3>
-                <h5>Users: {this.props.group.users.map(user => user.fullname)}</h5>
-                <button className="ui basic blue button" onClick={() => {
+                <h3>{this.props.group.name}</h3>
+                <h5>Followers: {name.join(", ")}</h5>
+                <button className="ui teal button" onClick={() => {
                     this.handleAddMovieClick()
                   }}>Search For Movie</button>
                 {this.state.clickedAddMovie ? <Search group={this.props.group}/> : null}
                 </div>
 
+              <div className="groups">
               {this.props.group.movies.map(singleMovie => (
-              <div key={singleMovie.id} className="groups">
+              <div key={singleMovie.id}>
                 <div className="groupcard" key={singleMovie.id}>
-                  <p>Name: {singleMovie.title}</p>
-                  <p>Year: {singleMovie.year}</p>
+                  <h2>{singleMovie.title}</h2>
+                  <h4>{singleMovie.year}</h4>
                   <img alt="" src={singleMovie.poster}/>
-                  <p>Plot: {singleMovie.plot}</p>
+                  <p>{singleMovie.plot}</p>
                   <button className="ui blue button" onClick={() => {
                       this.handleClickedComment(singleMovie)
                     }}>Add Spoiler</button>
@@ -75,11 +80,12 @@ class GroupDetails extends React.Component {
                       <div className="hidden content">
                         Are you sure?
                       </div>
-                    </button>
-                    {this.state.clicked && this.state.spoiledMovie === singleMovie ?  singleMovie.comments.map(comment => comment.content) : null}
+                    </button><br/><br/>
+                  {this.state.clicked && this.state.spoiledMovie === singleMovie ?  singleMovie.comments.map(comment => <p>{comment.content + " "}</p>) : null}
                 </div>
               </div>
               ))}
+              </div>
             </div>
                   : null
               }

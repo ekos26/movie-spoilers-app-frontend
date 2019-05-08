@@ -20,9 +20,11 @@ class CommentFormJoinGroup extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submitHandler}>
-        <textarea placeholder="Spoiler" name="comment" value={this.state.comment} onChange={this.changeHandler}></textarea>
-        <input type="submit" value="Add Spoiler To Movie" />
+      <form className="ui form" onSubmit={this.submitHandler}>
+        <div className="field">
+          <input type="text" placeholder="Spoiler" name="comment" value={this.state.comment} onChange={this.changeHandler}/>
+        </div>
+          <button className="ui teal button" type="submit">Submit Spoiler here</button>
       </form>
     )
   }

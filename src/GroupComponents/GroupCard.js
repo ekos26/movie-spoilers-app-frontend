@@ -23,14 +23,16 @@ class GroupCard extends React.Component {
   }
 
   render() {
+    let names = []
+    this.props.movies[0] && this.props.group.users.map(user => names.push(user.fullname))
     return (
         <div className="groupcard">
           <h3>Group Name: {this.props.group.name}</h3>
 
-          <p>Movie: {this.props.movies[0] && this.props.movies[0].title}</p>
+          
           <img alt="" src={this.props.movies[0] && this.props.movies[0].poster} />
           <h5>Users: </h5>
-            <p>{this.props.movies[0] && this.props.group.users.map(user => user.fullname + " ")}</p>
+            <p>{names.join(', ')}</p>
           <Link to={`/groups/${this.props.group.id}`}>
             <button className="ui left attached button" onClick={() => {
               this.props.selectGroup(this.props.group.id)}}>More Details</button>

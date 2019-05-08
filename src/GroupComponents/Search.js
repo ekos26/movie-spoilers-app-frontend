@@ -39,7 +39,7 @@ class Search extends React.Component {
       <div className="search object">
 
             <form onSubmit={this.handleSubmit}>
-              <div className="ui grid">
+              <div >
                 <div className="six wide column">
                   <div className="ui search">
                     <div className="ui icon input">
@@ -54,14 +54,14 @@ class Search extends React.Component {
       {this.state.movieObj ?
         <div className="searched movie">
 
-            <div className="groupcard">
-          <h3>Name: {this.state.movieObj.Title}</h3>
-          <p>Year: {this.state.movieObj.Year}</p>
-          <img alt="" src={this.state.movieObj.Poster}/>
-          <p>Plot: {this.state.movieObj.Plot}</p>
-          <button className="ui blue animated button" onClick={() => {
-            this.props.addMovie(this.state.movieObj, this.props.group)
-          }}>Add Movie To Group</button>
+          <div className="groupcard">
+            <h2>{this.state.movieObj.Title}</h2>
+            <p>{this.state.movieObj.Year}</p>
+            <img alt="" src={this.state.movieObj.Poster}/>
+            <p>{this.state.movieObj.Plot}</p>
+            <button className="ui blue button" onClick={() => {
+              this.props.addMovie(this.state.movieObj, this.props.group)
+            }}>Add Movie</button>
           </div>
 
         </div> : null

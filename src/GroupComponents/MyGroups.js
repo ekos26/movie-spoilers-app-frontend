@@ -21,7 +21,7 @@ class MyGroups extends React.Component {
   }
 
   leaveUserGroup = (data) => {
-    console.log(data);
+    // console.log(data);
     this.props.leaveUserGroup(data)
   }
 
@@ -30,38 +30,35 @@ class MyGroups extends React.Component {
     // console.log('does this run');
     const groups = []
     if (this.props.user) {
-      console.log("User Groups", this.props.user.user_groups);
+      // console.log("User Groups", this.props.user.user_groups);
       // console.log(' props.user.groups:', this.props.user.groups);
       this.props.user.groups.forEach((group,index) => {
-        console.log('group', group);
-        return groups.push(<li key={index}>{group.name} <button id={group.id} onClick={() => {
+        // console.log('group', group);
+        return groups.push(<p key={index}>{group.name} <button className="ui blue button" id={group.id} onClick={() => {
             this.deleteHandler(
               this.props.user.user_groups.filter(pickedGroup => {
                 return pickedGroup.group_id === group.id
               })
             )
-          }}>Leave Group</button></li>)
+          }}>Leave Group</button></p>)
       })
     }
 
     return (
-      <div>
+      <div className="my group">
         {
           this.props.user ?
-          <>
-          <h3>Username: {this.props.user.username}</h3>
-          <h3>Fullname: {this.props.user.fullname}</h3>
-          <ul>
-            Your Groups: {groups}
-          </ul>
-          </> : null }
-      </div>
+          <div className="profile-div">
+              <h2>Your Groups</h2>
+              <p>{groups}</p>
+        </div> : null }
+    </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state.user)
+  // console.log(state.user)
   return {
     user: state.user,
     myGroups: state.myGroups

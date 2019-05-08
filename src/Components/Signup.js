@@ -29,7 +29,7 @@ class Signup extends Component {
       <div className="ui center aligned grid">
         <div className="six wide column">
         <div className="ui container">
-          <h1 className="ui huge header">
+          <h1 className="ui blue huge header">
             <img className="image" src="https://cdn4.iconfinder.com/data/icons/eldorado-multimedia/40/movie_1-256.png" alt="" />
             Please sign up
           </h1>
