@@ -1,8 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
-const Home = () => {
+const Home = (props) => {
   let token = localStorage.getItem('token');
+
+  const btnClick = () => {
+    props.history.push("/signup")
+  }
 
   return (
     <div>
@@ -11,18 +15,24 @@ const Home = () => {
         <p>The Movie App where it is safe to share spoilers!</p>
         {!!token ?
           null :
-          <div className="sign">
-            <div className="ui massive purple button">
-              <Link className='text' to="/signup">
+          <div className='funDiv'>
+            <button className="ui massive purple button" onClick={btnClick}>
                 New? Sign up!
-              </Link>
-            </div>
-          </div>}
+            </button>
+          </div>
+          }
+        </div>
           <img className="spin-image" alt="" src="https://res.cloudinary.com/ddmxdfzlm/image/upload/v1557330249/jiusvfj7018jricwbjud.png"/>
           <img className='popcorn' alt="" src="https://res.cloudinary.com/ddmxdfzlm/image/upload/v1557347076/fomo3exrj1pzkfe0rsoa.png" />
-      </div>
     </div>
   )
 }
 
-export default Home;
+// <div className="ui massive purple button" onClick={btnClick}>
+//   <Link to="/signup" className='text'>
+//     New? Sign up!
+//   </Link>
+// </div>
+
+
+export default withRouter(Home);

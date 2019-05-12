@@ -24,6 +24,7 @@ class Signup extends Component {
   };
 
   render () {
+    console.log('sign up where');
     return (
       <div className="ui container">
       <div className="ui center aligned grid">

@@ -27,7 +27,7 @@ code {
   margin-left: 40%;
   margin-top: 2%;
   position: fixed;
-  z-index: -1;
+  z-index: -200;
   animation: spin 4s linear infinite;
 }
 
@@ -40,6 +40,7 @@ code {
   margin-left: 40%;
   margin-top: -4%;
   position: fixed;
+  z-index: -100;
 }
 
 .header p {
@@ -189,4 +190,23 @@ code {
 
 .profile-div h2 {
   text-decoration-line: underline;
+}
+
+.funDiv {
+  /* margin: 0 auto; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+#button {
+  margin-left: 40%;
+}
+
+.sub {
+  margin-left: 40%;
+  height: 70px;
+  width: 300px;
+  background-color: purple;
 }
